@@ -14,6 +14,7 @@ SELECT fullname FROM
 ORDER BY countTransaction DESC
 LIMIT 1;
 
+# написать запрос, отражающий все транзакции, где передача денег осуществлялась между представителями одного города
 
 SELECT *,
        (SELECT city_id FROM persons WHERE persons.id = transactions.to_person_id)   as city_to,
