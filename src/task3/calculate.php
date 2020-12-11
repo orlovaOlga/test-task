@@ -1,14 +1,22 @@
 <?php
 
+if (isset($_POST['summ'])) {
 
-$banknotes = [5, 10, 20, 50, 100, 200, 500];
-$summ = $_GET['summ'];
+    $banknotes = [5, 10, 20, 50, 100, 200, 500];
+    $summ = $_POST['summ'];
+
+    $banknotesQuantity = getMoney($banknotes, $summ);
+    echo json_encode($banknotesQuantity);
+}
+
 
 function getMoney($banknotes, $summ) {
     $withoutLastChar = substr($summ, 0,strlen($summ) - 1);
     if($summ % 5 !== 0) {
-        throw new \Exception("Invalid amount. Chose {$withoutLastChar}0 or {$withoutLastChar}5");
+        echo json_encode(["status" => "error", "message" => "Неверная сумма. Введите {$withoutLastChar}0 или {$withoutLastChar}5"]);
+        die;
     }
+
     $banknoteQuantity = [5 => 0, 10 => 0, 20 => 0, 50 => 0, 100 => 0, 200 => 0, 500 => 0];
 
     while ($summ > 0) {
@@ -26,12 +34,11 @@ function getMoney($banknotes, $summ) {
             $i--;
         }
     }
-    return $banknoteQuantity;
+    return [
+        'status' => 'success',
+        'data' => $banknoteQuantity
+    ];
 }
-
-$banknotsQuantity = getMoney($banknotes, $summ);
-
-?>
 
 
 
