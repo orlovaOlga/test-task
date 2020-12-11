@@ -13,3 +13,9 @@ docker-pull:
 docker-build:
 	docker-composer build
 
+##export-dump:
+##	docker exec -i db mysqldump -uroot -ppassword --databases db --skip-comments > /Users/olga/Documents/dump.sql
+
+export-dump:
+	docker-compose exec db mysqldump -uroot -ppassword --databases db --skip-comments > /Users/olga/Documents/dump.sql
+
