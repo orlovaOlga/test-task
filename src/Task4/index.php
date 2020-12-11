@@ -1,4 +1,4 @@
-<form action="task4.php" method="post">
+<form action="index.php" method="post">
     Введите название команды:
     <br>
     <p><input name="team" type="text" size="25" /></p>
@@ -7,7 +7,7 @@
 
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use PHPHtmlParser\Dom;
 

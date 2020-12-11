@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ChessTask;
+namespace App\Task1;
 
 class King extends AbstractChessmen
 {
